@@ -44,7 +44,7 @@ public class JwtFilter implements Filter {
                 return;
             }
             Integer id = userData.get("id").asInt();
-            String userName = userData.get("userName").asString();
+            String userName = userData.get("username").asString();
             String password = userData.get("password").asString();
             //拦截器 拿到用户信息，放到request中
             request.setAttribute("id", id);
