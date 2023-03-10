@@ -17,6 +17,18 @@ public class Category {
     @Column(name = "description")
     private String description;
 
+    @Basic
+    @Column(name = "is_deleted")
+    private boolean isDeleted;
+
+    public boolean getIsDeleted() {
+        return isDeleted;
+    }
+
+    public void setDeleted(boolean isDeleted) {
+        this.isDeleted = isDeleted;
+    }
+
     public int getId() {
         return id;
     }
@@ -24,6 +36,7 @@ public class Category {
     public void setId(int id) {
         this.id = id;
     }
+
 
     public String getName() {
         return name;

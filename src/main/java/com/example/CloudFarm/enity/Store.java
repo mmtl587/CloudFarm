@@ -27,6 +27,18 @@ public class Store {
     @Column(name = "create_time")
     private Timestamp createTime;
 
+    @Basic
+    @Column(name = "is_deleted")
+    private boolean isDeleted;
+
+    public boolean getIsDeleted() {
+        return isDeleted;
+    }
+
+    public void setDeleted(boolean isDeleted) {
+        this.isDeleted = isDeleted;
+    }
+
     public int getId() {
         return id;
     }
