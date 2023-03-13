@@ -1,9 +1,11 @@
 package com.example.CloudFarm.controller;
 
+import com.example.CloudFarm.VO.PasswordVO;
 import com.example.CloudFarm.config.MessagePropertise;
 import com.example.CloudFarm.enity.Farmer;
 import com.example.CloudFarm.service.FarmerService;
 import com.example.CloudFarm.utility.ResultBuild;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -49,6 +51,20 @@ public class FarmerController {
             return ResultBuild.success(map);
         }catch (Exception e){
             result = ResultBuild.error(this.messagePropertise.getProperties("ERROR_001"));
+        }
+        return result;
+    }
+
+
+    @RequestMapping(value = "/filter/farmerPassword", method = RequestMethod.POST)
+    @ResponseBody
+    public ResultBuild login(HttpServletRequest request, @Validated @RequestBody PasswordVO passwordVO) {
+        ResultBuild result;
+        try {
+            farmerService.updatePassword(request.getAttribute("username").toString(), passwordVO.getNewPassword(), passwordVO.getOldPassword());
+            return ResultBuild.success();
+        } catch (Exception e) {
+            result = ResultBuild.error(this.messagePropertise.getProperties("ERROR_0010"));
         }
         return result;
     }

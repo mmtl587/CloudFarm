@@ -56,7 +56,13 @@ public class CustomerController {
     }
 
 
-    @RequestMapping(value = "/filter/password", method = RequestMethod.POST)
+    /**
+     *  顾客修改密码
+     * @param
+     * @param passwordVO
+     * @throws IllegalArgumentException
+     */
+    @RequestMapping(value = "/filter/customerPassword", method = RequestMethod.POST)
     @ResponseBody
     public ResultBuild login(HttpServletRequest request, @Validated @RequestBody PasswordVO passwordVO){
         ResultBuild result;

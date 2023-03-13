@@ -2,12 +2,14 @@ package com.example.CloudFarm.controller;
 
 import com.example.CloudFarm.config.MessagePropertise;
 import com.example.CloudFarm.enity.Carousel;
+import com.example.CloudFarm.enity.Category;
 import com.example.CloudFarm.repository.CarouselRepository;
 import com.example.CloudFarm.service.CarouselService;
 import com.example.CloudFarm.service.CustomerService;
 import com.example.CloudFarm.utility.ResultBuild;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -31,9 +33,10 @@ public class CarouselController {
         this.carouselRepository = carouselRepository;
     }
 
-    @RequestMapping(value = "/uploadImage", method = RequestMethod.POST)
+    @RequestMapping(value = "/carousel", method = RequestMethod.POST)
     @ResponseBody
-    public ResultBuild uploadImage(@RequestParam("file") MultipartFile file) {
+    public ResultBuild uploadImage(@RequestParam("file") MultipartFile file,
+                                   @Validated @RequestBody Carousel carousel) {
         //判断文件是否为空
         if (file.isEmpty()) {
             return ResultBuild.error("文件为空");
@@ -50,8 +53,6 @@ public class CarouselController {
             File filePath = new File(path + filename);
             //将文件保存到本地文件系统中
             Files.write(filePath.toPath(), bytes);
-
-            Carousel carousel = new Carousel();
             carousel.setImage(filePath.getCanonicalPath());
             carouselRepository.save(carousel);
             // return success result
@@ -61,6 +62,26 @@ public class CarouselController {
             // return error result
             return ResultBuild.error("文件上传失败");
         }
+    }
+
+    @RequestMapping(value = "/findAllCarousel", method = RequestMethod.GET)
+    @ResponseBody
+    public ResultBuild findAllCarousel(@RequestParam("targetType") int targetType) {
+        return ResultBuild.success(carouselRepository.findAllByTargetType(targetType));
+    }
+
+
+    @RequestMapping(value = "/deleteCarousel/{id}", method = RequestMethod.POST)
+    @ResponseBody
+    public ResultBuild deleteCarousel(@PathVariable int id){
+        ResultBuild result;
+        try{
+            carouselService.deleteCarouseInfo(id);
+            return ResultBuild.success();
+        }catch (Exception e){
+            result = ResultBuild.error(this.messagePropertise.getProperties("ERROR_003"));
+        }
+        return result;
     }
 
 

@@ -1,6 +1,6 @@
 package com.example.CloudFarm.service;
 
-import com.example.CloudFarm.enity.Customer;
+import com.example.CloudFarm.enity.Farmer;
 import com.example.CloudFarm.enity.Farmer;
 import com.example.CloudFarm.repository.FarmerRepository;
 import com.example.CloudFarm.utility.JwtUtil;
@@ -52,4 +52,14 @@ public class FarmerService {
         return map;
     }
 
+
+    public void updatePassword(String username,String newPassword,String oldPassword) throws IllegalArgumentException{
+        Farmer farmer = farmerRepository.findByUsername(username).get();
+        if(farmerRepository.findByUsername(username).isPresent() && farmer.getPassword().equals(oldPassword)){
+            farmer.setPassword(newPassword);
+            farmerRepository.save(farmer);
+        }else {
+            throw new IllegalArgumentException();
+        }
+    }
 }
