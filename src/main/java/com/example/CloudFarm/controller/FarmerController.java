@@ -61,7 +61,7 @@ public class FarmerController {
     public ResultBuild login(HttpServletRequest request, @Validated @RequestBody PasswordVO passwordVO) {
         ResultBuild result;
         try {
-            farmerService.updatePassword(request.getAttribute("username").toString(), passwordVO.getNewPassword(), passwordVO.getOldPassword());
+            farmerService.updatePassword(request.getAttribute("userName").toString(), passwordVO.getNewPassword(), passwordVO.getOldPassword());
             return ResultBuild.success();
         } catch (Exception e) {
             result = ResultBuild.error(this.messagePropertise.getProperties("ERROR_0010"));

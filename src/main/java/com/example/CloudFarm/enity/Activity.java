@@ -19,16 +19,16 @@ public class Activity {
     private int productId;
     @Basic
     @Column(name = "title")
-    private String title;
+    private String  title;
     @Basic
     @Column(name = "content")
-    private String content;
+    private String  content;
     @Basic
     @Column(name = "start_time")
-    private Timestamp startTime;
+    private String startTime;
     @Basic
     @Column(name = "end_time")
-    private Timestamp endTime;
+    private String endTime;
 
     public int getId() {
         return id;
@@ -54,35 +54,35 @@ public class Activity {
         this.productId = productId;
     }
 
-    public String getTitle() {
+    public String  getTitle() {
         return title;
     }
 
-    public void setTitle(String title) {
+    public void setTitle(String  title) {
         this.title = title;
     }
 
-    public String getContent() {
+    public String  getContent() {
         return content;
     }
 
-    public void setContent(String content) {
+    public void setContent(String  content) {
         this.content = content;
     }
 
-    public Timestamp getStartTime() {
+    public String getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(Timestamp startTime) {
+    public void setStartTime(String startTime) {
         this.startTime = startTime;
     }
 
-    public Timestamp getEndTime() {
+    public String getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(Timestamp endTime) {
+    public void setEndTime(String endTime) {
         this.endTime = endTime;
     }
 

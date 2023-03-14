@@ -26,7 +26,7 @@ public class Order {
     private BigDecimal price;
     @Basic
     @Column(name = "create_time")
-    private Timestamp createTime;
+    private String createTime;
     @Basic
     @Column(name = "status")
     private byte status;
@@ -71,11 +71,11 @@ public class Order {
         this.price = price;
     }
 
-    public Timestamp getCreateTime() {
+    public String getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Timestamp createTime) {
+    public void setCreateTime(String createTime) {
         this.createTime = createTime;
     }
 

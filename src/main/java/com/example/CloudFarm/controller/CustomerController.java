@@ -67,7 +67,7 @@ public class CustomerController {
     public ResultBuild login(HttpServletRequest request, @Validated @RequestBody PasswordVO passwordVO){
         ResultBuild result;
         try{
-            customerService.updatePassword(request.getAttribute("username").toString(), passwordVO.getNewPassword(), passwordVO.getOldPassword());
+            customerService.updatePassword(request.getAttribute("userName").toString(), passwordVO.getNewPassword(), passwordVO.getOldPassword());
             return ResultBuild.success();
         }catch (Exception e){
             result = ResultBuild.error(this.messagePropertise.getProperties("ERROR_0010"));

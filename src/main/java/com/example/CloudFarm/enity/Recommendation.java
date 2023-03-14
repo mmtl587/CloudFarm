@@ -22,7 +22,7 @@ public class Recommendation {
     private int storeId;
     @Basic
     @Column(name = "create_time")
-    private Timestamp createTime;
+    private String createTime;
 
     public int getId() {
         return id;
@@ -56,11 +56,11 @@ public class Recommendation {
         this.storeId = storeId;
     }
 
-    public Timestamp getCreateTime() {
+    public String getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Timestamp createTime) {
+    public void setCreateTime(String createTime) {
         this.createTime = createTime;
     }
 

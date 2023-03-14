@@ -24,20 +24,21 @@ public class JwtUtil {
     /**
      * 过期时间
      **/
-    private static final long EXPIRATION = 1800L;//单位为秒
+    private static final long EXPIRATION = 86400L;//单位为秒
 
     /**
      * 生成用户token,设置token超时时间
      */
     public static String createCustomerToken(Customer customer) {
         //过期时间
-        Date expireDate = new Date(System.currentTimeMillis() + EXPIRATION * 1000);
+        Date expireDate = new Date(System.currentTimeMillis() + EXPIRATION * 1000 * 7);
         Map<String, Object> map = new HashMap<>();
         map.put("alg", "HS256");
         map.put("typ", "JWT");
         String token = JWT.create()
                 .withHeader(map)// 添加头部
                 //可以将基本信息放到claims中
+                .withClaim("id", customer.getId())//id
                 .withClaim("username", customer.getUsername())//userName
                 .withClaim("password", customer.getPassword())//password
                 .withExpiresAt(expireDate) //超时设置,设置过期的日期
@@ -48,13 +49,14 @@ public class JwtUtil {
 
     public static String createFarmerToken(Farmer farmer) {
         //过期时间
-        Date expireDate = new Date(System.currentTimeMillis() + EXPIRATION * 1000);
+        Date expireDate = new Date(System.currentTimeMillis() + EXPIRATION * 1000 * 7);
         Map<String, Object> map = new HashMap<>();
         map.put("alg", "HS256");
         map.put("typ", "JWT");
         String token = JWT.create()
                 .withHeader(map)// 添加头部
                 //可以将基本信息放到claims中
+                .withClaim("id", farmer.getId())
                 .withClaim("username", farmer.getUsername())//userName
                 .withClaim("password", farmer.getPassword())//password
                 .withExpiresAt(expireDate) //超时设置,设置过期的日期

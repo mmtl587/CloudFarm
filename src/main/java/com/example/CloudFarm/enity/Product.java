@@ -20,19 +20,19 @@ public class Product {
     private Integer categoryId;
     @Basic
     @Column(name = "name")
-    private String name;
+    private String  name;
     @Basic
     @Column(name = "image")
-    private String image;
+    private String  image;
     @Basic
     @Column(name = "price")
     private BigDecimal price;
     @Basic
     @Column(name = "description")
-    private String description;
+    private String  description;
     @Basic
     @Column(name = "create_time")
-    private Timestamp createTime;
+    private String createTime;
 
     @Basic
     @Column(name = "is_deleted")
@@ -70,19 +70,19 @@ public class Product {
         this.categoryId = categoryId;
     }
 
-    public String getName() {
+    public String  getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(String  name) {
         this.name = name;
     }
 
-    public String getImage() {
+    public String  getImage() {
         return image;
     }
 
-    public void setImage(String image) {
+    public void setImage(String  image) {
         this.image = image;
     }
 
@@ -94,19 +94,19 @@ public class Product {
         this.price = price;
     }
 
-    public String getDescription() {
+    public String  getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(String  description) {
         this.description = description;
     }
 
-    public Timestamp getCreateTime() {
+    public String getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Timestamp createTime) {
+    public void setCreateTime(String createTime) {
         this.createTime = createTime;
     }
 

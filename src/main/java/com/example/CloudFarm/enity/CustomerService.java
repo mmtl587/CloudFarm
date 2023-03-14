@@ -20,10 +20,10 @@ public class CustomerService {
     private byte type;
     @Basic
     @Column(name = "content")
-    private String content;
+    private String  content;
     @Basic
     @Column(name = "create_time")
-    private Timestamp createTime;
+    private String createTime;
 
     public int getId() {
         return id;
@@ -49,19 +49,19 @@ public class CustomerService {
         this.type = type;
     }
 
-    public String getContent() {
+    public String  getContent() {
         return content;
     }
 
-    public void setContent(String content) {
+    public void setContent(String  content) {
         this.content = content;
     }
 
-    public Timestamp getCreateTime() {
+    public String getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Timestamp createTime) {
+    public void setCreateTime(String createTime) {
         this.createTime = createTime;
     }
 

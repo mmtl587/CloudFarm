@@ -17,7 +17,7 @@ public class StoreService {
 
 
     public List<Store> showAllStore(){
-        return storeRepository.findAll();
+        return storeRepository.findAllByIsDeletedFalse();
     }
 
     public Store updateStore(Store store) throws IllegalArgumentException{
@@ -26,8 +26,8 @@ public class StoreService {
     }
 
     public void deleteStore(int id) throws IllegalArgumentException{
-        Store store = storeRepository.findById(id).get();
-        if(storeRepository.findById(id).isEmpty()){
+        Store store = storeRepository.findByIdAndIsDeletedFalse(id).get();
+        if(storeRepository.findByIdAndIsDeletedFalse(id).isEmpty()){
             throw new IllegalArgumentException();
         }else {
             store.setDeleted(true);

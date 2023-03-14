@@ -16,16 +16,16 @@ public class Store {
     private Integer farmerId;
     @Basic
     @Column(name = "name")
-    private String name;
+    private String  name;
     @Basic
     @Column(name = "logo")
-    private String logo;
+    private String  logo;
     @Basic
     @Column(name = "description")
-    private String description;
+    private String  description;
     @Basic
     @Column(name = "create_time")
-    private Timestamp createTime;
+    private String createTime;
 
     @Basic
     @Column(name = "is_deleted")
@@ -55,35 +55,35 @@ public class Store {
         this.farmerId = farmerId;
     }
 
-    public String getName() {
+    public String  getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(String  name) {
         this.name = name;
     }
 
-    public String getLogo() {
+    public String  getLogo() {
         return logo;
     }
 
-    public void setLogo(String logo) {
+    public void setLogo(String  logo) {
         this.logo = logo;
     }
 
-    public String getDescription() {
+    public String  getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(String  description) {
         this.description = description;
     }
 
-    public Timestamp getCreateTime() {
+    public String getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Timestamp createTime) {
+    public void setCreateTime(String createTime) {
         this.createTime = createTime;
     }
 

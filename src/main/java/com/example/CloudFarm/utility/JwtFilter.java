@@ -5,12 +5,10 @@ import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
 import java.util.Map;
 
-@Slf4j
 @WebFilter(filterName = "JwtFilter", urlPatterns = "/filter/*")
 public class JwtFilter implements Filter {
     @Override
